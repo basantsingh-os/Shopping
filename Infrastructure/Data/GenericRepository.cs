@@ -43,9 +43,6 @@ namespace Infrastructure.Data
             return SpecificationEvaluater<T>.GetQuery(_context.Set<T>().AsQueryable(),spec);
         }
 
-        public Task ListAsync()
-        {
-            throw new System.NotImplementedException();
-        }
+     
     }
 }
