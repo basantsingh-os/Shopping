@@ -1,24 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using API.Errors;
 using API.Extesions;
 using API.Helpers;
 using API.MiddleWare;
 using AutoMapper;
-using Core.Interface;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Microsoft.OpenApi.Models;
 
 namespace API
 {
@@ -46,6 +35,12 @@ namespace API
             services.AddApplicationServices();
 
             services.AddSwaggerDocumenetation();
+            services.AddCors(opt=>{
+                opt.AddPolicy("CorsPolicy",policy=>{
+                    policy.AllowAnyHeader().
+                    AllowAnyMethod().WithOrigins("http://localhost:4200");
+                });
+                });
 
 
         }
@@ -65,8 +60,10 @@ namespace API
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
+            
             app.UseStaticFiles();
+
+            app.UseCors("CorsPolicy");
 
             app.UseAuthorization();
 
