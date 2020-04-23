@@ -29,7 +29,7 @@ export class ShopService {
       params = params.append('typeId', shopParams.typeId.toString());
     }
 
-    if(shopParams.search) {
+    if (shopParams.search) {
       params = params.append('search', shopParams.search);
     }
     params = params.append('sort', shopParams.sort);
