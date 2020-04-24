@@ -5,33 +5,74 @@
 
   <div class="row">
     <section class="col-3">
-      <h5 class="text-warning ml-3">Sort</h5>
-      <select class="custom-select mb-3" (change)="onSortSelected($event.target.value)">
+
+
+
+      <h5 class="ml-3">Sort</h5>
+
+<select class="custom-select mb-3" (change)="onSortSelected($event.target.value)">
       <option *ngFor="let sort of sortOptions"
       [value]="sort.value">{{sort.name}}</option>
       </select>
-    <h5 class="text-warning ml-3">Brands</h5>
 
-    <ul class="list-group y-3"
-     *ngFor="let brand of brands">
-  <li class="list-group-item"
-  [class.active]="brand.id === this.shopParams.brandId"
-  [value]="brand.id"
-  (click)="onBrandSelected(brand.id)"
-  >{{brand.name}}</li>
 
-</ul>
 
-    <h5 class="text-warning ml-3">Types</h5>
 
-  <ul class="list-group y-3"
-  *ngFor="let type of types" >
-  <li class="list-group-item"
-  [class.active]="type.id === this.shopParams.typeId"
-  [value]="type.Id"
-  (click)="onTypeSelected(type.id)">{{type.name}}</li>
 
-  </ul>
+
+
+
+
+    <h5 class="ml-3">Brands</h5>
+
+
+
+<mat-radio-group
+  aria-labelledby="example-radio-group-label"
+  class="example-radio-group">
+
+
+<ng-container  *ngFor="let brand of brands" >
+
+ <mat-radio-button *ngIf="brand.id != 0" class="example-radio-button" [value]="brand.id" (change)="onBrandSelected(brand.id)">
+    {{brand.name}}
+  </mat-radio-button>
+    <mat-radio-button *ngIf="brand.id === 0" class="example-radio-button" [value]="brand.id" (change)="onBrandSelected(brand.id)" [checked]='true'>
+    {{brand.name}}
+  </mat-radio-button>
+
+</ng-container>
+
+
+
+
+
+</mat-radio-group>
+
+
+
+
+
+
+
+    <h5 class="ml-3">Types</h5>
+<mat-radio-group
+  aria-labelledby="example-radio-group-label"
+  class="example-radio-group">
+
+<ng-container  *ngFor="let type of types" >
+
+ <mat-radio-button *ngIf="type.id != 0" class="example-radio-button" [value]="type.id" (change)="onTypeSelected(type.id)">
+    {{type.name}}
+  </mat-radio-button>
+    <mat-radio-button *ngIf="type.id === 0" class="example-radio-button" [value]="type.id" (change)="onTypeSelected(type.id)" [checked]='true'>
+    {{type.name}}
+  </mat-radio-button>
+
+</ng-container>
+
+</mat-radio-group>
+
    </section>
 
 
@@ -49,7 +90,7 @@
        <mat-label>Search</mat-label>
        <input #search (keydown.enter)="onSearch()" matInput placeholder="ex.pizza" style="width:150px;">
        </mat-form-field>
-      
+
     <button (click)="onSearch()" mat-button color="primary">Search</button>
 
     <button  (click)="onReset()" mat-button color="warn" >Reset</button>

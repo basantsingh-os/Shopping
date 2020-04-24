@@ -4,6 +4,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {PaginationModule} from 'ngx-bootstrap/pagination';
 import { PagingHeaderComponent } from './Components/paging-header/paging-header.component';
 import { PagerComponent } from './Components/pager/pager.component';
+import { MatIconModule } from '@angular/material/icon';
 @NgModule({
   declarations: [PagingHeaderComponent, PagerComponent],
   imports: [
@@ -14,7 +15,8 @@ import { PagerComponent } from './Components/pager/pager.component';
   exports: [MatPaginatorModule,
              PaginationModule,
              PagingHeaderComponent,
-             PagerComponent
+             PagerComponent,
+             MatIconModule
             ]
 })
 export class SharedModule { }
