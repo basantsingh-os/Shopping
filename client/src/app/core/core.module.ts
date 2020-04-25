@@ -9,11 +9,14 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
-
+import { TestErrorComponent } from './test-error/test-error.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { ServerErrorComponent } from './server-error/server-error.component';
+import {ToastrModule} from 'ngx-toastr';
 
 
 @NgModule({
-  declarations: [NavBarComponent, MainNavComponent],
+  declarations: [NavBarComponent, MainNavComponent, TestErrorComponent, NotFoundComponent, ServerErrorComponent],
   imports: [
     CommonModule,
     LayoutModule,
@@ -22,7 +25,11 @@ import { RouterModule } from '@angular/router';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    RouterModule
+    RouterModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true
+    })
   ],
   exports: [NavBarComponent , MainNavComponent]
 })
