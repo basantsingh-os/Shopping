@@ -1,21 +1,21 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav"
+  <mat-sidenav  #drawer class="sidenav"
       [ngClass]="{hidden: !(isHandset$ | async )}"
       fixedInViewport="false"
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
+    <mat-toolbar >Menu</mat-toolbar>
+    <mat-nav-list >
       <a mat-list-item routerLink="/" routerLinkActive="active"
       [routerLinkActiveOptions]="{exact: true}" >Home</a>
       <a mat-list-item routerLink="/shop" routerLinkActive="active"
       [routerLinkActiveOptions]="{exact: true}" >Shop</a>
-      <a mat-list-item routerLink="/test-error">Contact</a>
+      <a mat-list-item routerLink="/test-error" routerLinkActive="active">Contact</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar color="primary"  [class.mat-elevation-z8]="true">
       <button
         type="button"
         aria-label="Toggle sidenav"
@@ -24,12 +24,15 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>Client</span>
+      <span><i class="fa fa-github fa-3x"></i>
+</span>
       <span class="spacer"></span>
 
-      <a routerLink="/" routerLinkActive="active">Home</a>
-      <a routerLink="/shop" routerLinkActive="active">Shop</a>
-      <a routerLink="/test-error" routerLinkActive="active">Contact</a>
+      <a routerLink="/">Home</a>
+
+
+      <a routerLink="/shop" >Shop</a>
+      <a routerLink="/test-error" >Contact</a>
     </mat-toolbar>
     <!-- Add Content Here -->
     <ng-content></ng-content>

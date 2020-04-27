@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { IProduct } from './shared/models/product';
 import { IPagination } from './shared/models/pagination';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,6 +11,18 @@ import { IPagination } from './shared/models/pagination';
 })
 export class AppComponent implements OnInit {
   title = 'Shopping';
+  showSpinner: boolean;
+  constructor() { }
+
+
+
 
   ngOnInit(): void {}
 }
+
+
+
+
+
+
+

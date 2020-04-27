@@ -11,7 +11,7 @@ import { PageEvent } from '@angular/material/paginator';
   styleUrls: ['./shop.component.scss']
 })
 export class ShopComponent implements OnInit {
-  @ViewChild('search', {static: true}) searchTerm: ElementRef; // because no conditions
+  @ViewChild('search', {static: false}) searchTerm: ElementRef; // because no conditions
   products: IProduct[];
   types: IType[];
   brands: IBrand[];
