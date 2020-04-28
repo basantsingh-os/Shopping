@@ -1,3 +1,5 @@
+
+
 .sidenav-container {
   height: 100%;
 }
@@ -43,16 +45,53 @@ mat-toolbar a
 //   }
 // }
 
-a{
+mat-sidenav >a{
 
   text-decoration: none;
   color: white;
 
 
   &.active{
-    color:red;
+    color:rgb(63,81,181);
   }
 }
+
+
+.spacer
+{
+  margin-right:100px!important;
+}
+
+
+mat-nav-list.list-horizontal {
+  padding: 0;
+  width: 100%;
+
+  .mat-list-item {
+    display: inline-block;
+    height: auto;
+    width: auto;
+
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

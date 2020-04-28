@@ -6,22 +6,27 @@ import { PagingHeaderComponent } from './Components/paging-header/paging-header.
 import { PagerComponent } from './Components/pager/pager.component';
 import { MatIconModule } from '@angular/material/icon';
 import {CarouselModule} from 'ngx-bootstrap/carousel';
+import { OrderTotalComponent } from './Components/order-total/order-total.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
 
 
 @NgModule({
-  declarations: [PagingHeaderComponent, PagerComponent],
+  declarations: [PagingHeaderComponent, PagerComponent, OrderTotalComponent],
   imports: [
     CommonModule,
     MatPaginatorModule,
     PaginationModule.forRoot(),
-    CarouselModule
+    CarouselModule,
+    MatToolbarModule
   ],
   exports: [MatPaginatorModule,
              PaginationModule,
              PagingHeaderComponent,
              PagerComponent,
              MatIconModule,
-             CarouselModule
+             CarouselModule,
+             OrderTotalComponent
             ]
 })
 export class SharedModule { }

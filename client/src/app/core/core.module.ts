@@ -15,7 +15,7 @@ import { ServerErrorComponent } from './server-error/server-error.component';
 import {ToastrModule} from 'ngx-toastr';
 import {BreadcrumbModule} from 'xng-breadcrumb';
 import { SectionHeaderComponent } from './section-header/section-header.component';
-
+import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
   declarations: [NavBarComponent, MainNavComponent, TestErrorComponent, NotFoundComponent, ServerErrorComponent, SectionHeaderComponent],
@@ -25,6 +25,7 @@ import { SectionHeaderComponent } from './section-header/section-header.componen
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
+    MatBadgeModule,
     MatIconModule,
     MatListModule,
     RouterModule,

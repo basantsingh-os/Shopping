@@ -1,0 +1,25 @@
+<mat-toolbar [class.mat-elevation-z8]="true" class="px-4 py-3 text-uppercase font-weight-bold">
+Order Summary
+</mat-toolbar>
+
+
+
+<div class="p-4"   [class.mat-elevation-z8]="true">
+<p class="font-italic mb-4"> Shipping Cost will be added depending upon choices made during checkout </p>
+<ul class="list-unstyled mb-4" *ngIf="(basketTotal$ | async ) as totals">
+<li class="d-flex justify-content-between py-3 border-bottom">
+<strong class="text-muted">Order Subtotal</strong>
+<strong>{{totals.subtotal  | currency: 'INR'}}</strong>
+</li>
+
+<li class="d-flex justify-content-between py-3 border-bottom">
+<strong class="text-muted">Shipping and handling</strong>
+<strong>{{totals.shipping  | currency: 'INR'}}</strong>
+</li>
+
+<li class="d-flex justify-content-between py-3 border-bottom">
+<strong class="text-muted">Total</strong>
+<strong>{{totals.total | currency: 'INR'}}</strong>
+</li>
+</ul>
+</div>
