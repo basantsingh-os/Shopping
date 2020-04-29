@@ -15,12 +15,12 @@
 
 <div class="d-flex justify-content-start align-items-center">
 
-      <button mat-mini-fab	class="mr-3" color="primary"><strong>+</strong></button>
-      <span class="font-weight-bold" style="font-size: 1.5em">3</span>
+      <button mat-mini-fab	class="mr-3" color="primary" (click)="incrementQuantity()"><strong>+</strong></button>
+      <span class="font-weight-bold" style="font-size: 1.5em">{{quantity}}</span>
 
-      <button mat-mini-fab	class="ml-3" color="warn"><strong>-</strong></button>
+      <button mat-mini-fab	class="ml-3" color="warn" (click)="decrementQuantity()"><strong>-</strong></button>
 
-<button mat-raised-button color="primary" class="ml-4">Add to Cart</button>
+<button mat-raised-button color="primary" class="ml-4"  (click)="addItemToBasket()">Add to Cart</button>
 </div>
 </div>
 
