@@ -8,6 +8,9 @@ import { MatIconModule } from '@angular/material/icon';
 import {CarouselModule} from 'ngx-bootstrap/carousel';
 import { OrderTotalComponent } from './Components/order-total/order-total.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import {  ReactiveFormsModule } from '@angular/forms';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 
@@ -18,7 +21,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatPaginatorModule,
     PaginationModule.forRoot(),
     CarouselModule,
-    MatToolbarModule
+    MatToolbarModule,
+    ReactiveFormsModule,
+    MatMenuModule,
+    MatExpansionModule
   ],
   exports: [MatPaginatorModule,
              PaginationModule,
@@ -26,7 +32,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
              PagerComponent,
              MatIconModule,
              CarouselModule,
-             OrderTotalComponent
+             OrderTotalComponent,
+             ReactiveFormsModule,
+             MatMenuModule,
+             MatExpansionModule
             ]
 })
 export class SharedModule { }

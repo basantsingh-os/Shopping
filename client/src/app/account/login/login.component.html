@@ -1,0 +1,60 @@
+
+<div class="container">
+
+
+<mat-vertical-stepper [linear]="!isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Enter Your Email</ng-template>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput type="email"  placeholder="name@example.com" name="email" id="email" formControlName="email" required>
+
+        <mat-error *ngIf=" firstFormGroup.controls.email.hasError('pattern') && !firstFormGroup.controls.email.hasError('required')">
+        enter a valid
+        </mat-error>
+
+        <mat-error *ngIf="firstFormGroup.controls.email.hasError('required')">
+        email is must
+        </mat-error>
+
+         <mat-error *ngIf="!firstFormGroup.controls.email.hasError('pattern') && !firstFormGroup.controls.email.hasError('required')">
+        email not registered
+        </mat-error>
+
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup" (ngSubmit)="onSubmit()">
+      <ng-template matStepLabel>Enter Your Password</ng-template>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" type="password" name="password" id="password"
+               required>
+
+
+        <mat-error *ngIf="secondFormGroup.controls.password.hasError('required')">
+        password is required
+        </mat-error>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-raised-button matStepperNext color="primary" [disabled]="firstFormGroup.controls.email.hasError('required') || firstFormGroup.controls.email.hasError('pattern') || secondFormGroup.controls.password.hasError('required')">Login</button>
+      </div>
+    </form>
+  </mat-step>
+
+</mat-vertical-stepper>
+
+</div>
+
+
+
+
+
+
+

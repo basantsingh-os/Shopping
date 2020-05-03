@@ -5,16 +5,30 @@
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>shop</mat-toolbar>
+    <mat-toolbar><mat-icon>storefront</mat-icon></mat-toolbar>
     <mat-nav-list>
       <a mat-list-item routerLink="/" routerLinkActive="active"
       [routerLinkActiveOptions]="{exact: true}" >Home</a>
       <a mat-list-item routerLink="/shop" routerLinkActive="active"
       [routerLinkActiveOptions]="{exact: true}" >Shop</a>
-      <a mat-list-item routerLink="/test-error" routerLinkActive="active">Contact</a>
-      <a  mat-list-item routerLink="/test-error" >Login</a>
-      <a  mat-list-item routerLink="/test-error" >SignUp</a>
-      <a  mat-list-item routerLink="/test-error" >Change Theme</a>
+    <a  mat-list-item routerLink="/test-error" >Change Theme</a>
+
+       <ng-container *ngIf="(currentUser$ | async) === null">
+      <a mat-list-item routerLink="/account/login" >Login</a>
+      <a mat-list-item routerLink="/account/register">SignUp</a>
+      </ng-container>
+
+      <ng-container *ngIf="currentUser$ | async">
+      <a mat-list-item [matMenuTriggerFor]="menu" dropdownToggle>Hi {{(currentUser$ | async).displayName}}<i class="fa fa-caret-down ml-1"></i></a>
+      <mat-menu #menu="matMenu">
+       <a mat-menu-item class="styleDropdownOfNav" routerLink="/basket"><i class="fa fa-shopping-cart mr-3"></i>View Cart</a>
+       <a mat-menu-item class="styleDropdownOfNav" routerLink="/basket"><i class="fa fa-history mr-3"></i>View Orders</a>
+       <a mat-menu-item class="styleDropdownOfNav" (click)="logout()"><i class="fa fa-sign-out mr-3"></i>Logout</a>
+      </mat-menu>
+
+
+      </ng-container>
+
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -27,7 +41,7 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span> <a href="https://angular.io/"> <img src="favicon.ico" alt="angular" id="icon"></a></span>
+      <span>  <a mat-list-item href="https://github.com/basantsingh-os"><i class="fa fa-github fa-2x"></i></a></span>
 
 
 
@@ -38,15 +52,31 @@
       <a mat-list-item routerLink="/test-error"  [hidden]="(isHandset$ | async )" >Contact</a>
 
 
-      <a  mat-list-item routerLink="/test-error"   [hidden]="(isHandset$ | async )">Login</a>
-      <a  mat-list-item routerLink="/test-error"   [hidden]="(isHandset$ | async )">SignUp</a>
 
 
 
 
- <a mat-list-item routerLink="/basket" class="float-right" *ngIf="(basket$ | async) as basket"><span matBadge="{{basket.items.length}}" matBadgeOverlap="false" matBadgeColor="warn"><i class="fa fa-shopping-cart fa-2x"></i></span> </a>
-  <a mat-list-item class="float-right" href="https://github.com/basantsingh-os"><i class="fa fa-github fa-2x"></i></a>
- <a mat-list-item class="float-right"    [hidden]="(isHandset$ | async )"><i class="fa fa-paint-brush fa-2x"></i></a>
+
+ <a mat-list-item routerLink="/basket" class="float-right " *ngIf="(basket$ | async) as basket"><span matBadge="{{basket.items.length}}" matBadgeOverlap="false" matBadgeColor="warn"><i class="fa fa-shopping-cart fa-2x"></i></span> </a>
+
+ <a mat-list-item class="float-right"><i class="fa fa-paint-brush fa-2x"></i></a>
+
+
+   <ng-container *ngIf="(currentUser$ | async) === null">
+      <a class="float-right" mat-list-item routerLink="/account/login"  [hidden]="(isHandset$ | async )" >Login</a>
+      <a class="float-right" mat-list-item routerLink="/account/register"  [hidden]="(isHandset$ | async )">SignUp</a>
+      </ng-container>
+      <ng-container *ngIf="currentUser$ | async">
+      <a mat-list-item class="float-right" [matMenuTriggerFor]="menu" dropdownToggle   [hidden]="(isHandset$ | async )">Hi {{(currentUser$ | async).displayName}}<i class="fa fa-caret-down ml-1"></i></a>
+      <mat-menu #menu="matMenu"  [hidden]="(isHandset$ | async )">
+       <a mat-menu-item class="styleDropdownOfNav" routerLink="/basket"><i class="fa fa-shopping-cart mr-3"></i>View Cart</a>
+       <a mat-menu-item class="styleDropdownOfNav" routerLink="/basket"><i class="fa fa-history mr-3"></i>View Orders</a>
+       <a mat-menu-item class="styleDropdownOfNav" (click)="logout()"><i class="fa fa-sign-out mr-3"></i>Logout</a>
+      </mat-menu>
+
+
+      </ng-container>
+
 
 
   </mat-nav-list>
@@ -65,6 +95,7 @@
 
   </mat-sidenav-content>
 </mat-sidenav-container>
+
 
 
 

@@ -92,7 +92,8 @@ namespace API.Controllers
 
             if (user == null) return Unauthorized(new ApiResponse(401));
 
-            var result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password, false); // if too many bad requests then set it as true
+            var result = await _signInManager.CheckPasswordSignInAsync(user, loginDto.Password, false);
+                         // if too many bad requests then set it as true
 
             if (!result.Succeeded) return Unauthorized(new ApiResponse(401));
 
@@ -109,6 +110,10 @@ namespace API.Controllers
 
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto)
         {
+            if(CheckEmailExistsAsync(registerDto.Email).Result.Value)
+            {
+                return new BadRequestObjectResult(new ApiValidationErrorResponse{Errors = new [] {"Email Address is already being used"} });
+            }
             var user = new AppUser
             {
                 DisplayName = registerDto.DisplayName,
