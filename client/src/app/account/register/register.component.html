@@ -34,7 +34,7 @@
         <mat-label>Email</mat-label>
 
         <input matInput type="email"  placeholder="name@example.com" name="email" id="email" formControlName="email" >
-         
+
 
 
         <mat-error *ngIf=" secondFormGroup.controls.email.hasError('pattern') && !secondFormGroup.controls.email.hasError('required')">
@@ -68,7 +68,7 @@
                required>
 
         <mat-error *ngIf="thirdFormGroup.controls.password.hasError('pattern') && !thirdFormGroup.controls.password.hasError('required')">
-        atleast 1-uppercase,1-lowercase,1-numeric and 1-special characters
+        atleast 1-uppercase,1-lowercase,1-alpha-numeric and 1-special characters
         </mat-error>
 
          <mat-error *ngIf="thirdFormGroup.controls.password.hasError('required')">
