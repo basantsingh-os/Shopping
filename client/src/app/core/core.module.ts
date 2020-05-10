@@ -1,7 +1,7 @@
 import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
+
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -19,7 +19,7 @@ import { SectionHeaderComponent } from './section-header/section-header.componen
 import {MatBadgeModule} from '@angular/material/badge';
 
 @NgModule({
-  declarations: [NavBarComponent, MainNavComponent, TestErrorComponent, NotFoundComponent, ServerErrorComponent, SectionHeaderComponent],
+  declarations: [ MainNavComponent, TestErrorComponent, NotFoundComponent, ServerErrorComponent, SectionHeaderComponent],
   imports: [
     CommonModule,
     LayoutModule,
@@ -41,6 +41,6 @@ import {MatBadgeModule} from '@angular/material/badge';
 
 
   ],
-  exports: [NavBarComponent , MainNavComponent, SectionHeaderComponent]
+  exports: [ MainNavComponent, SectionHeaderComponent]
 })
 export class CoreModule { }

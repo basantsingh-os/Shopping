@@ -11,11 +11,18 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import {  ReactiveFormsModule } from '@angular/forms';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatStepperModule} from '@angular/material/stepper';
+import { BasketSummaryComponent } from './Components/basket-summary/basket-summary.component';
+import { RouterModule } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+
+
+
 
 
 
 @NgModule({
-  declarations: [PagingHeaderComponent, PagerComponent, OrderTotalComponent],
+  declarations: [PagingHeaderComponent, PagerComponent, OrderTotalComponent, BasketSummaryComponent],
   imports: [
     CommonModule,
     MatPaginatorModule,
@@ -24,7 +31,10 @@ import {MatExpansionModule} from '@angular/material/expansion';
     MatToolbarModule,
     ReactiveFormsModule,
     MatMenuModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatStepperModule,
+    RouterModule,
+    MatButtonModule
   ],
   exports: [MatPaginatorModule,
              PaginationModule,
@@ -35,7 +45,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
              OrderTotalComponent,
              ReactiveFormsModule,
              MatMenuModule,
-             MatExpansionModule
+             MatExpansionModule,
+             BasketSummaryComponent
+
             ]
 })
 export class SharedModule { }
