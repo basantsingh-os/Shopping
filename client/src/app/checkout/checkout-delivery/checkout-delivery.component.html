@@ -3,10 +3,12 @@
        <mat-radio-group
        aria-labelledby="example-radio-group-label"
        class="example-radio-group" formControlName="deliveryMethod">
-     <mat-radio-button class="example-radio-button" *ngFor ="let method of deliveryMethods" [value]="method.shortName"   (change)="setShippingPrice(method)">
+     <mat-radio-button class="example-radio-button" *ngFor ="let method of deliveryMethods" [value]="method.id"   (change)="setShippingPrice(method)">
         {{method.shortName}} {{method.price | currency: 'INR'}} {{method.description}}
      </mat-radio-button>
-
+     <mat-error *ngIf="deliveryFormGroup.controls.deliveryMethod.hasError('required')">
+        Delivery method is required
+       </mat-error>
 
      </mat-radio-group>
 

@@ -1,1 +1,9 @@
-<p>checkout-payment works!</p>
+<form [formGroup]="paymentFormGroup">
+
+
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext (click)="submitOrder()">Submit Order</button>
+      </div>
+    </form>

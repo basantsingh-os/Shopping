@@ -47,7 +47,7 @@ setBasket(basket: IBasket){
   );
 }
 
-getCurrentBasketvalue()
+getCurrentBasketValue()
 {
   return this.basketSource.value;
 }
@@ -55,7 +55,7 @@ getCurrentBasketvalue()
 
 addItemToBasket(item: IProduct, quantity = 1) {
   const itemToAdd: IBasketItem = this.mapProductItemToVasketItem(item , quantity);
-  let basket = this.getCurrentBasketvalue();
+  let basket = this.getCurrentBasketValue();
   if (basket === null) {
    basket = this.createBasket();
   }
@@ -64,7 +64,7 @@ addItemToBasket(item: IProduct, quantity = 1) {
 }
 
 incrementItemQuantity(item: IBasketItem){
-  const basket = this.getCurrentBasketvalue();
+  const basket = this.getCurrentBasketValue();
   const foundItemIndex = basket.items.findIndex(x => x.id === item.id);
   basket.items[foundItemIndex].quantity++;
   this.setBasket(basket);
@@ -73,7 +73,7 @@ incrementItemQuantity(item: IBasketItem){
 
 
 decrementItemQuantity(item: IBasketItem){
-  const basket = this.getCurrentBasketvalue();
+  const basket = this.getCurrentBasketValue();
   const foundItemIndex = basket.items.findIndex(x => x.id === item.id);
   if ( basket.items[foundItemIndex].quantity > 1) {
   basket.items[foundItemIndex].quantity--;
@@ -88,7 +88,7 @@ else
 
 }
   removeItemfromBasket(item: IBasketItem) {
-    const basket = this.getCurrentBasketvalue();
+    const basket = this.getCurrentBasketValue();
     if (basket.items.some( x => x.id === item.id))
     {
       basket.items = basket.items.filter(i => i.id !== item.id);
@@ -102,6 +102,12 @@ else
     }
 
   }
+
+  deleteLocalBasket(id: string) {
+    this.basketSource.next(null);
+    this.basketTotalSource.next(null);
+    localStorage.removeItem('basket_id');
+ }
   deleteBasket(basket: IBasket) {
     return this.http.delete(this.baseUrl + 'basket?id=' + basket.id).subscribe(() => {
       this.basketSource.next(null);
@@ -114,7 +120,7 @@ else
   }
 
 private calculateTotals(){
-  const basket = this.getCurrentBasketvalue();
+  const basket = this.getCurrentBasketValue();
   const shipping = this.shipping;
   const subtotal = basket.items.reduce( (a , b) => (b.price * b.quantity) + a, 0);
   const total = subtotal + shipping;

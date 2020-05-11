@@ -28,7 +28,7 @@ export class StepperComponent implements OnInit {
     });
 
     this.deliveryFormGroup = this.formBuilder.group({
-      deliveryMethod: ['FREE']
+      deliveryMethod: ['', Validators.required]
 
     });
     this.reviewFormGroup = this.formBuilder.group({

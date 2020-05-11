@@ -21,44 +21,27 @@
   <mat-step [stepControl]="deliveryFormGroup">
        <app-checkout-delivery [deliveryFormGroup]="deliveryFormGroup">
           <ng-template matStepLabel>Delivery</ng-template>
-      
+
        </app-checkout-delivery>
   </mat-step>
 
 
     <mat-step [stepControl]="reviewFormGroup">
-    <form [formGroup]="reviewFormGroup">
-      <ng-template matStepLabel>Review</ng-template>
-
-       <app-checkout-review></app-checkout-review>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
+     <app-checkout-review [reviewFormGroup]="reviewFormGroup"><ng-template matStepLabel>Review</ng-template></app-checkout-review>
+   
   </mat-step>
 
 
      <mat-step [stepControl]="paymentFormGroup">
-    <form [formGroup]="paymentFormGroup">
-      <ng-template matStepLabel>Payment</ng-template>
+           <app-checkout-payment [addressFormGroup]="addressFormGroup" [deliveryFormGroup] ="deliveryFormGroup"  [paymentFormGroup]="paymentFormGroup">
+           <ng-template matStepLabel>Payment</ng-template>
+           </app-checkout-payment>
 
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
+    </mat-step>
 
 
 
 
-  <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    <p>You are now done.</p>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
-    </div>
-  </mat-step>
+
+
 </mat-vertical-stepper>
