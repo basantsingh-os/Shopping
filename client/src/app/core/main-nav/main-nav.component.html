@@ -22,8 +22,9 @@
       <a mat-list-item [matMenuTriggerFor]="menu" dropdownToggle>Hi {{(currentUser$ | async).displayName}}<i class="fa fa-caret-down ml-1"></i></a>
       <mat-menu #menu="matMenu">
        <a mat-menu-item class="styleDropdownOfNav" routerLink="/basket"><i class="fa fa-shopping-cart mr-3"></i>View Cart</a>
-       <a mat-menu-item class="styleDropdownOfNav" routerLink="/basket"><i class="fa fa-history mr-3"></i>View Orders</a>
+       <a mat-menu-item class="styleDropdownOfNav" routerLink="/orders"><i class="fa fa-history mr-3"></i>View Orders</a>
        <a mat-menu-item class="styleDropdownOfNav" (click)="logout()"><i class="fa fa-sign-out mr-3"></i>Logout</a>
+
       </mat-menu>
 
 
@@ -56,8 +57,11 @@
 
 
 
+  <a mat-list-item routerLink="/basket" class="float-right " *ngIf="(basket$ | async) as basket"><span matBadge="{{basket.items.length}}" matBadgeOverlap="false" matBadgeColor="warn"><i class="fa fa-shopping-cart fa-2x"></i></span> </a>
 
- <a mat-list-item routerLink="/basket" class="float-right " *ngIf="(basket$ | async) as basket"><span matBadge="{{basket.items.length}}" matBadgeOverlap="false" matBadgeColor="warn"><i class="fa fa-shopping-cart fa-2x"></i></span> </a>
+
+
+
 
  <a mat-list-item class="float-right"><i class="fa fa-paint-brush fa-2x"></i></a>
 
@@ -70,7 +74,7 @@
       <a mat-list-item class="float-right" [matMenuTriggerFor]="menu" dropdownToggle   [hidden]="(isHandset$ | async )">Hi {{(currentUser$ | async).displayName}}<i class="fa fa-caret-down ml-1"></i></a>
       <mat-menu #menu="matMenu"  [hidden]="(isHandset$ | async )">
        <a mat-menu-item class="styleDropdownOfNav" routerLink="/basket"><i class="fa fa-shopping-cart mr-3"></i>View Cart</a>
-       <a mat-menu-item class="styleDropdownOfNav" routerLink="/basket"><i class="fa fa-history mr-3"></i>View Orders</a>
+       <a mat-menu-item class="styleDropdownOfNav" routerLink="/orders"><i class="fa fa-history mr-3"></i>View Orders</a>
        <a mat-menu-item class="styleDropdownOfNav" (click)="logout()"><i class="fa fa-sign-out mr-3"></i>Logout</a>
       </mat-menu>
 

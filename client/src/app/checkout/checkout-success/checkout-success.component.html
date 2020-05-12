@@ -2,5 +2,6 @@
 <div>  <mat-icon color="primary" class="icon-display ml-3">check_circle</mat-icon></div>
 <h2 class="mt-4">Your Order is Confirmed Boss</h2>
 <p class="mb-4">Order is not shipped yet </p>
-<button mat-raised-button color="primary">View your order</button>
+<button mat-raised-button color="primary" *ngIf="order" routerLink="/orders/{{order?.id}}">View your order</button>
+<button mat-raised-button color="primary" *ngIf="!order" routerLink="/orders">View your all orders</button>
 </div>

@@ -1,3 +1,4 @@
+
 <div class="container mt-2">
 <div *ngIf="(basket$ | async ) === null">
 <p>There are no items in the basket</p>
@@ -21,7 +22,7 @@
         <div class="col-ls-6 col-xl-6 col-md-6 col-sm-0 col-xs-0"></div>
         <div class="col-ls-6 col-xl-6 col-md-6 col-sm-12 col-sx-12">
         <app-order-total></app-order-total>
-        <button mat-raised-button color="primary" class="col-12" routerLink="/checkout"   [class.mat-elevation-z8]="true">checkout</button>
+        <button mat-raised-button color="primary" class="col-12" routerLink="/checkout"   [class.mat-elevation-z8]="true" (click)="sayHello()">checkout</button>
         </div>
     </div>
   </div>
@@ -29,5 +30,3 @@
 
 </div>
 </div>
-
-

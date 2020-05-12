@@ -3,6 +3,7 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Rout
 import { Observable } from 'rxjs';
 import { AccountService } from 'src/app/account/account.service';
 import { map } from 'rxjs/operators';
+import { BasketService } from 'src/app/basket/basket.service';
 
 @Injectable({
   providedIn: 'root'
@@ -30,4 +31,5 @@ export class AuthGuard implements CanActivate {
       );
 
   }
+
 }

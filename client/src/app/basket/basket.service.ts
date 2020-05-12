@@ -119,6 +119,9 @@ else
     );
   }
 
+
+
+
 private calculateTotals(){
   const basket = this.getCurrentBasketValue();
   const shipping = this.shipping;
